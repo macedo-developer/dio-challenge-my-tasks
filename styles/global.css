@@ -73,9 +73,61 @@ main .form-tasks {
 .tasks-header .form-tasks-header input {
   height: 40px;
   border: none;
-  background-color: #f3e60f;
-  color: white;
+  background-color: #c1c1c1;
+  /* color: white; */
   border-radius: 10px;
   padding: 8px;
   margin: 5px;
+}
+
+.btn-insert-task {
+  width: 50px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1f0a40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-insert-task i {
+  color: white;
+  font-size: 15px;
+}
+
+.task-list {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.task-list ul {
+  width: 100%;
+  list-style: none;
+}
+
+.task-list ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #7659f2;
+}
+
+ul li .task-name-check {
+  display: flex;
+  flex-direction: row;
+}
+
+ul li .task-name-check input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+ul li .task-name-check p {
+  margin-left: 10px;
 }

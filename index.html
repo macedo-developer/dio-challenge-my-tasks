@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Tasks</title>
 
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+      crossorigin="anonymous"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,12 +29,14 @@
         <div class="form-tasks">
           <div class="tasks-header">
             <div class="title-tasks-header">
-              <h1>My tasks</h1>
+              <h1>my tasks</h1>
             </div>
             <div class="form-tasks-header">
-              <input type="text" placeholder="Add tasks" />
+              <input type="text" placeholder="Add task" />
               <input type="date" name="date-task" id="date-task" />
-              <button class="btn-insert-task"></button>
+              <button class="btn-insert-task">
+                <i class="far fa-check-circle"></i>
+              </button>
             </div>
           </div>
           <div class="task-list">
@@ -40,7 +48,9 @@
                 </div>
                 <div class="task-date-del">
                   <span>17/07/2022</span>
-                  <button class="btn-delete-task"></button>
+                  <button class="btn-delete-task">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
                 </div>
               </li>
             </ul>
