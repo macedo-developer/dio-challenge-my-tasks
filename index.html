@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Tasks</title>
-</head>
-<body>
-    <h1>My Task</h1>
-</body>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/global.css" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>to.do</h1>
+      </header>
+      <main>
+        <div class="form-tasks">
+          <div class="tasks-header">
+            <div class="title-tasks-header">
+              <h1>My tasks</h1>
+            </div>
+            <div class="form-tasks-header">
+              <input type="text" placeholder="Add tasks" />
+              <input type="date" name="date-task" id="date-task" />
+              <button class="btn-insert-task"></button>
+            </div>
+          </div>
+          <div class="task-list">
+            <ul>
+              <li>
+                <div class="task-name-check">
+                  <input type="checkbox" name="check-task" id="check-task" />
+                  <p>Name task</p>
+                </div>
+                <div class="task-date-del">
+                  <span>17/07/2022</span>
+                  <button class="btn-delete-task"></button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
