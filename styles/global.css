@@ -14,6 +14,14 @@ body {
   font-family: "Ubuntu", sans-serif;
 }
 
+input,
+h1,
+p,
+input,
+span {
+  font-family: "Ubuntu", sans-serif;
+}
+
 body {
   background: rgb(43, 43, 43);
 }
@@ -60,7 +68,6 @@ main .form-tasks {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: ;
 }
 
 .tasks-header .form-tasks-header {
@@ -76,7 +83,7 @@ main .form-tasks {
   background-color: #c1c1c1;
   /* color: white; */
   border-radius: 10px;
-  padding: 8px;
+  padding: 15px;
   margin: 5px;
 }
 
@@ -90,6 +97,12 @@ main .form-tasks {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-insert-task:hover {
+  background-color: #6727f2;
 }
 
 .btn-insert-task i {
@@ -111,6 +124,7 @@ main .form-tasks {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   border-bottom: 1px solid #7659f2;
 }
@@ -120,14 +134,61 @@ ul li .task-name-check {
   flex-direction: row;
 }
 
-ul li .task-name-check input[type="checkbox"] {
-  height: 20px;
-  width: 20px;
-  background-color: #eee;
-  border-radius: 2px;
+ul li .task-name-check input[type="checkbox"]::before {
+  content: " ";
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #1f0a40;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked::after {
+  content: " ";
+  width: 0.2rem;
+  height: 0.5rem;
+  margin-left: 0.3rem;
+  border-color: #1f0a40;
+  border-style: solid;
+  border-width: 0 3px 3px 0;
+  position: absolute;
+  transform: rotate(45deg);
   cursor: pointer;
 }
 
 ul li .task-name-check p {
   margin-left: 10px;
+  /* text-decoration: line-through */
+}
+
+ul li .task-date-del {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+ul li .task-date-del span {
+  margin-right: 10px;
+  /* text-decoration: line-through */
+}
+
+ul li .task-date-del .btn-delete-task {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+ul li .task-date-del .btn-delete-task i {
+  color: #e02913;
+  transition: color 0.5s ease-in-out;
+}
+
+ul li .task-date-del .btn-delete-task i:hover {
+  color: #8d1a0d;
 }
