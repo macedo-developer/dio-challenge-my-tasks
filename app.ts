@@ -85,8 +85,6 @@ function handleCheckTask(id: number) {
       : item
   );
 
-  console.log(newTasks);
-
   tasks = newTasks;
 
   handleTasksList(tasks);
@@ -102,8 +100,10 @@ function handleDeleteTask(id: number) {
 
 function handleTasksList(tasks: ArrayTasks) {
   if (tasks.length > 0) {
+    ulElement.innerHTML = "";
     tasks.map((item) => {
-      ulElement.innerHTML = `
+      console.log(item);
+      ulElement.innerHTML += `
         <li id="${item.id}">
               <div class="task-name-check">
               <input onClick="handleCheckTask(${item.id})" type="checkbox" ${

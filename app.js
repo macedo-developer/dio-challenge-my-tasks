@@ -46,7 +46,6 @@ function handleCheckTask(id) {
         return item.id == id
             ? __assign(__assign({}, item), { ativa: !item.ativa }) : item;
     });
-    console.log(newTasks);
     tasks = newTasks;
     handleTasksList(tasks);
 }
@@ -57,8 +56,10 @@ function handleDeleteTask(id) {
 }
 function handleTasksList(tasks) {
     if (tasks.length > 0) {
+        ulElement.innerHTML = "";
         tasks.map(function (item) {
-            ulElement.innerHTML = "\n        <li id=\"".concat(item.id, "\">\n              <div class=\"task-name-check\">\n              <input onClick=\"handleCheckTask(").concat(item.id, ")\" type=\"checkbox\" ").concat(item.ativa ? "checked" : "", " name=\"check-task\" id=\"check-task\" />\n                  <p ").concat(item.ativa ? 'style="text-decoration: line-through;"' : "", ">").concat(item.description, "</p>\n              </div>\n              <div class=\"task-date-del\">\n                  <span>").concat(item.date, "</span>\n                  <button class=\"btn-delete-task\" onClick=\"handleDeleteTask(").concat(item.id, ")\">\n                  <i class=\"fas fa-trash-alt\"></i>\n                  </button>\n              </div>\n        </li>        \n          ");
+            console.log(item);
+            ulElement.innerHTML += "\n        <li id=\"".concat(item.id, "\">\n              <div class=\"task-name-check\">\n              <input onClick=\"handleCheckTask(").concat(item.id, ")\" type=\"checkbox\" ").concat(item.ativa ? "checked" : "", " name=\"check-task\" id=\"check-task\" />\n                  <p ").concat(item.ativa ? 'style="text-decoration: line-through;"' : "", ">").concat(item.description, "</p>\n              </div>\n              <div class=\"task-date-del\">\n                  <span>").concat(item.date, "</span>\n                  <button class=\"btn-delete-task\" onClick=\"handleDeleteTask(").concat(item.id, ")\">\n                  <i class=\"fas fa-trash-alt\"></i>\n                  </button>\n              </div>\n        </li>        \n          ");
         });
     }
     else {
