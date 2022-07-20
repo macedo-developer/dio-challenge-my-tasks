@@ -132,6 +132,8 @@ main .form-tasks {
 ul li .task-name-check {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 ul li .task-name-check input[type="checkbox"]::before {
@@ -191,4 +193,44 @@ ul li .task-date-del .btn-delete-task i {
 
 ul li .task-date-del .btn-delete-task i:hover {
   color: #8d1a0d;
+}
+
+@media (max-width: 870px) {
+  .form-tasks .tasks-header {
+    flex-direction: column;
+  }
+
+  .tasks-header .form-tasks-header {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  main .form-tasks {
+    padding: 40px;
+  }
+
+  .tasks-header .form-tasks-header {
+    flex-direction: column;
+  }
+
+  .tasks-header .form-tasks-header input {
+    width: 100%;
+  }
+
+  .btn-insert-task {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .task-list ul li {
+    flex-direction: column;
+  }
+
+  ul li .task-date-del {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 }
