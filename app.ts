@@ -33,6 +33,7 @@ function InsertTask(description: string, date: string) {
       description,
       date,
     };
+
     tasks.push(task);
 
     addTaskList(task);
@@ -44,14 +45,13 @@ function InsertTask(description: string, date: string) {
 }
 
 function handleButton() {
-  console.log(inputDescritionElement.value);
-  console.log(inputDateElement.value);
-
   InsertTask(inputDescritionElement.value, inputDateElement.value);
 }
 
 function addTaskList(task: iTask) {
   if (task) {
+    let dateTaskFormatt = onHandleDateFormat(task.date);
+    
     ulElement.innerHTML += `
         <li id="${task.id}">
             <div class="task-name-check">
@@ -63,7 +63,7 @@ function addTaskList(task: iTask) {
                 }>${task.description}</p>
             </div>
             <div class="task-date-del">
-                <span>${task.date}</span>
+                <span>${dateTaskFormatt}</span>
                 <button class="btn-delete-task" onClick="handleDeleteTask(${
                   task.id
                 })">
@@ -99,22 +99,22 @@ function handleDeleteTask(id: number) {
 }
 
 function handleTasksList(tasks: ArrayTasks) {
-  if (tasks.length > 0) {
-    ulElement.innerHTML = "";
-    tasks.map((item) => {
-      console.log(item);
-      ulElement.innerHTML += `
+  ulElement.innerHTML = "";
+
+  tasks.map((item) => {
+    let dateTaskFormatt = onHandleDateFormat(item.date);
+    ulElement.innerHTML += `
         <li id="${item.id}">
               <div class="task-name-check">
               <input onClick="handleCheckTask(${item.id})" type="checkbox" ${
-        item.ativa ? "checked" : ""
-      } name="check-task" id="check-task" />
+      item.ativa ? "checked" : ""
+    } name="check-task" id="check-task" />
                   <p ${
                     item.ativa ? 'style="text-decoration: line-through;"' : ""
                   }>${item.description}</p>
               </div>
               <div class="task-date-del">
-                  <span>${item.date}</span>
+                  <span>${dateTaskFormatt}</span>
                   <button class="btn-delete-task" onClick="handleDeleteTask(${
                     item.id
                   })">
@@ -123,8 +123,14 @@ function handleTasksList(tasks: ArrayTasks) {
               </div>
         </li>        
           `;
-    });
-  } else {
-    ulElement.innerHTML = "";
-  }
+  });
+}
+
+function onHandleDateFormat(dateTask: string) {
+  var date = new Date(dateTask);
+  let dia = (date.getDate()+1).toString();
+  let mes = (date.getMonth() + 1).toString().padStart(2, "0");
+  let ano = date.getFullYear();
+
+  return `${dia}/${mes}/${ano}`;
 }

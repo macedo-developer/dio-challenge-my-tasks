@@ -32,13 +32,12 @@ function InsertTask(description, date) {
     return console.log("Não inserido!");
 }
 function handleButton() {
-    console.log(inputDescritionElement.value);
-    console.log(inputDateElement.value);
     InsertTask(inputDescritionElement.value, inputDateElement.value);
 }
 function addTaskList(task) {
     if (task) {
-        ulElement.innerHTML += "\n        <li id=\"".concat(task.id, "\">\n            <div class=\"task-name-check\">\n                <input onClick=\"handleCheckTask(").concat(task.id, ")\" type=\"checkbox\" ").concat(task.ativa ? "checked" : "", " name=\"check-task\" id=\"check-task\" />\n                <p ").concat(task.ativa ? 'style="text-decoration: line-through;"' : "", ">").concat(task.description, "</p>\n            </div>\n            <div class=\"task-date-del\">\n                <span>").concat(task.date, "</span>\n                <button class=\"btn-delete-task\" onClick=\"handleDeleteTask(").concat(task.id, ")\">\n                <i class=\"fas fa-trash-alt\"></i>\n                </button>\n            </div>\n            </li>        \n        ");
+        var dateTaskFormatt = onHandleDateFormat(task.date);
+        ulElement.innerHTML += "\n        <li id=\"".concat(task.id, "\">\n            <div class=\"task-name-check\">\n                <input onClick=\"handleCheckTask(").concat(task.id, ")\" type=\"checkbox\" ").concat(task.ativa ? "checked" : "", " name=\"check-task\" id=\"check-task\" />\n                <p ").concat(task.ativa ? 'style="text-decoration: line-through;"' : "", ">").concat(task.description, "</p>\n            </div>\n            <div class=\"task-date-del\">\n                <span>").concat(dateTaskFormatt, "</span>\n                <button class=\"btn-delete-task\" onClick=\"handleDeleteTask(").concat(task.id, ")\">\n                <i class=\"fas fa-trash-alt\"></i>\n                </button>\n            </div>\n            </li>        \n        ");
     }
 }
 function handleCheckTask(id) {
@@ -55,14 +54,16 @@ function handleDeleteTask(id) {
     handleTasksList(tasks);
 }
 function handleTasksList(tasks) {
-    if (tasks.length > 0) {
-        ulElement.innerHTML = "";
-        tasks.map(function (item) {
-            console.log(item);
-            ulElement.innerHTML += "\n        <li id=\"".concat(item.id, "\">\n              <div class=\"task-name-check\">\n              <input onClick=\"handleCheckTask(").concat(item.id, ")\" type=\"checkbox\" ").concat(item.ativa ? "checked" : "", " name=\"check-task\" id=\"check-task\" />\n                  <p ").concat(item.ativa ? 'style="text-decoration: line-through;"' : "", ">").concat(item.description, "</p>\n              </div>\n              <div class=\"task-date-del\">\n                  <span>").concat(item.date, "</span>\n                  <button class=\"btn-delete-task\" onClick=\"handleDeleteTask(").concat(item.id, ")\">\n                  <i class=\"fas fa-trash-alt\"></i>\n                  </button>\n              </div>\n        </li>        \n          ");
-        });
-    }
-    else {
-        ulElement.innerHTML = "";
-    }
+    ulElement.innerHTML = "";
+    tasks.map(function (item) {
+        var dateTaskFormatt = onHandleDateFormat(item.date);
+        ulElement.innerHTML += "\n        <li id=\"".concat(item.id, "\">\n              <div class=\"task-name-check\">\n              <input onClick=\"handleCheckTask(").concat(item.id, ")\" type=\"checkbox\" ").concat(item.ativa ? "checked" : "", " name=\"check-task\" id=\"check-task\" />\n                  <p ").concat(item.ativa ? 'style="text-decoration: line-through;"' : "", ">").concat(item.description, "</p>\n              </div>\n              <div class=\"task-date-del\">\n                  <span>").concat(dateTaskFormatt, "</span>\n                  <button class=\"btn-delete-task\" onClick=\"handleDeleteTask(").concat(item.id, ")\">\n                  <i class=\"fas fa-trash-alt\"></i>\n                  </button>\n              </div>\n        </li>        \n          ");
+    });
+}
+function onHandleDateFormat(dateTask) {
+    var date = new Date(dateTask);
+    var dia = (date.getDate() + 1).toString();
+    var mes = (date.getMonth() + 1).toString().padStart(2, "0");
+    var ano = date.getFullYear();
+    return "".concat(dia, "/").concat(mes, "/").concat(ano);
 }
