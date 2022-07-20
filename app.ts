@@ -75,24 +75,40 @@ function addTaskList(task: iTask) {
   }
 }
 
-function handleCheckTask(id: number) {}
+function handleCheckTask(id: number) {
+  const newTasks = tasks.map((item) =>
+    item.id == id
+      ? {
+          ...item,
+          ativa: !item.ativa,
+        }
+      : item
+  );
+
+  console.log(newTasks);
+
+  tasks = newTasks;
+
+  handleTasksList(tasks);
+}
 
 function handleDeleteTask(id: number) {
-  tasks = tasks.filter((tasks) => tasks.id != id);
-  console.log(tasks);
+  const newTasks = tasks.filter((tasks) => tasks.id != id);
+
+  tasks = newTasks;
 
   handleTasksList(tasks);
 }
 
 function handleTasksList(tasks: ArrayTasks) {
-  ulElement.innerHTML = "";
-  tasks.map((item) => {
-    ulElement.innerHTML = `
-      <li id="${item.id}">
+  if (tasks.length > 0) {
+    tasks.map((item) => {
+      ulElement.innerHTML = `
+        <li id="${item.id}">
               <div class="task-name-check">
               <input onClick="handleCheckTask(${item.id})" type="checkbox" ${
-      item.ativa ? "checked" : ""
-    } name="check-task" id="check-task" />
+        item.ativa ? "checked" : ""
+      } name="check-task" id="check-task" />
                   <p ${
                     item.ativa ? 'style="text-decoration: line-through;"' : ""
                   }>${item.description}</p>
@@ -105,7 +121,10 @@ function handleTasksList(tasks: ArrayTasks) {
                   <i class="fas fa-trash-alt"></i>
                   </button>
               </div>
-              </li>        
+        </li>        
           `;
-  });
+    });
+  } else {
+    ulElement.innerHTML = "";
+  }
 }
