@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
     "start": "tsc app.ts & lite-server",
-    "build": "vercel build"
+    "build": "lite-server"
   },
   "author": "renata",
   "license": "ISC",
